@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengumuman UM-PTKIN 2026</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: radial-gradient(circle at top, #1e293b, #020617);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(15px);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      animation: fadeIn 1.5s ease;
+    }
+    h1 {
+      margin-bottom: 10px;
+      font-size: 26px;
+      letter-spacing: 1px;
+    }
+    p {
+      margin: 5px 0;
+      opacity: 0.8;
+    }
+    #countdown {
+      margin-top: 25px;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      animation: pulse 1s infinite;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes pulse {
+      0% {transform: scale(1);}
+      50% {transform: scale(1.05);}
+      100% {transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>PENGUMUMAN UM-PTKIN 2026</h1>
+  <p>Hasil seleksi dapat dilihat pada:</p>
+  <p><b>30 Juni 2026 • 15:00 WIB</b></p>
+
+  <div id="countdown">Loading...</div>
+</div>
+
+<script>
+const targetDate = new Date("June 30, 2026 15:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
+    document.getElementById("countdown").innerHTML = "PENGUMUMAN SUDAH TERSEDIA 🎉";
+    return;
+  }
+
+  const d = Math.floor(diff / (1000*60*60*24));
+  const h = Math.floor((diff / (1000*60*60)) % 24);
+  const m = Math.floor((diff / (1000*60)) % 60);
+  const s = Math.floor((diff / 1000) % 60);
+
+  document.getElementById("countdown").innerHTML =
+    `${d} hari ${h} jam ${m} menit ${s} detik`;
+}, 1000);
+</script>
+
+</body>
+</html>
